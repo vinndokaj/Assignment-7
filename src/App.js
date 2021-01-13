@@ -12,6 +12,7 @@ export default class App extends Component {
   }
   
   modifyState(values){
+    console.log(`in modifyState ${values}`)
     this.setState({gifList : values});
   }
 
@@ -44,7 +45,7 @@ export default class App extends Component {
           <h1 id='head'>Search for Gifs using GIPHY!</h1>
         </div>
         <div id='searchDiv'>
-          {/* {<SearchField moodifyList={this.modifyState} />} */}
+          <SearchField modifyList={this.modifyState.bind(this)} />
         </div>
         <div id='gifDiv'>
           {this.state.gifList.map((gif, index) => (
