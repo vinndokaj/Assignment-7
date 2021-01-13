@@ -1,6 +1,5 @@
 import './App.css';
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import GifCard from './Components/GifCard';
 import SearchField from './Components/SearchField';
 
@@ -48,7 +47,6 @@ export default class App extends Component {
           {/* {<SearchField moodifyList={this.modifyState} />} */}
         </div>
         <div id='gifDiv'>
-          {/* <p>{ReactDOM.render(this.state.gifList)}</p> */}
           {this.state.gifList.map((gif, index) => (
             <div key={index}>{gif}</div>
           ))}
