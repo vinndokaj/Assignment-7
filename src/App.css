@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+#headDiv {
+  background-color:#282c34;
+  height: 100px;
+}
+
+#head {
+  color: white;
+  text-align: center;
+}
+
+#formDiv {
+  text-align: center;
+}
