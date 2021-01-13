@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { Component } from "react";
 
+class Gif extends Component {
 
-export default function GifCard() {
-    return (
-        <div>
-            <h1>poop</h1>
-        </div>
-    )
+    render() {
+        return (
+            <div className="pic">
+                <p>{this.props.title}</p>
+                <div class="pic" >
+                <img
+                class="info"
+                src={this.props.source}
+                alt="gif"
+                />
+                </div>
+            </div>
+        );
+    }
 }
+export default Gif;
