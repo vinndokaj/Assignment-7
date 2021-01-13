@@ -43,12 +43,10 @@ class Search extends React.Component {
 
     render(){ 
         return ( 
-            <div>
-                <label>
-                Gif Search:
-                <input type="text" value={this.state.query} onChange={this.handleChange} />
-                </label>
-            </div>
+            <label>
+            Gif Search:
+            <input type="text" value={this.state.query} onChange={this.handleChange} />
+            </label>
         )
     }
 }
