@@ -48,7 +48,7 @@ export default class App extends Component {
           {/* {<SearchField moodifyList={this.modifyState} />} */}
         </div>
         <div id='gifDiv'>
-          {/* {ReactDOM.render(this.state.gifList)} */}
+          {/* <p>{ReactDOM.render(this.state.gifList)}</p> */}
           {this.state.gifList.map((gif, index) => (
             <div key={index}>{gif}</div>
           ))}
