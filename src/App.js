@@ -9,7 +9,6 @@ export default class App extends Component {
     super();
     this.state = {gifList : []};
     this.modifyList = this.modifyState.bind(this);
-    this.searchGifs = this.searchGifs.bind(this);
     this.random = this.random.bind(this);
   }
   
@@ -19,17 +18,24 @@ export default class App extends Component {
   }
 
   random(){
-    this.searchGifs('random');
+    fetch(`https://api.giphy.com/v1/gifs/random?api_key=T4rKEp7Pn0ZqkYbzV7wgI06QkQwq76y9`)
+    .then(response => {
+      if (response.status !== 200) {
+        throw new Error("Problem fetching trending gifs");
+      }
+      return response.json();
+    })
+    .then(gif => {
+      const myGif = <GifCard info={gif.data} />
+      this.setState({gifList : [myGif]});
+    })
+    .catch(error => {
+      console.log("error", error)
+    })
   }
 
   componentDidMount(){
-    this.searchGifs('trending');
-  }
-
-  searchGifs(value){
-    const searchURL = `https://api.giphy.com/v1/gifs/${value}?api_key=T4rKEp7Pn0ZqkYbzV7wgI06QkQwq76y9`
-    console.log(searchURL)
-    fetch(`https://api.giphy.com/v1/gifs/${value}?api_key=T4rKEp7Pn0ZqkYbzV7wgI06QkQwq76y9`)
+    fetch(`https://api.giphy.com/v1/gifs/trending?api_key=T4rKEp7Pn0ZqkYbzV7wgI06QkQwq76y9`)
     .then(response => {
       if (response.status !== 200) {
         throw new Error("Problem fetching trending gifs");
@@ -58,11 +64,11 @@ export default class App extends Component {
         </div>
         <div id='searchDiv'>
           <SearchField modifyList={this.modifyState.bind(this)} />
-          {/* {<button id='random' onClick={this.random}>Random</button>} */}
+          <button id='random' onClick={this.random}>Random</button>
         </div>
         <div id='gifDiv'>
           {this.state.gifList.map((gif, index) => (
-            <div key={index}>{gif}</div>
+            <div className='gif' key={index}>{gif}</div>
           ))}
         </div>
       </>

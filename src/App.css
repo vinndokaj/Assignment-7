@@ -47,6 +47,10 @@
   text-align: center;
 }
 
-#formDiv {
+#searchDiv {
   text-align: center;
+}
+
+.gif {
+  display:inline-flex;
 }
